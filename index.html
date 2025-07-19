@@ -110,16 +110,16 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">(function () {
 	if ("geolocation" in navigator && typeof navigator.geolocation.getCurrentPosition === "function") {
-// setup the success and error callbacks as well as the options object
+		// setup the success and error callbacks as well as the options object
 		var	positionSuccess = function (position) {
-// you could simply assign the `coords` object to `$Location`,
-// however, this assigns only the latitude and longitude since
-// that seems to have been what you were attempting to do before
+				// you could simply assign the `coords` object to `$Location`,
+				// however, this assigns only the latitude and longitude since
+				// that seems to have been what you were attempting to do before
 				state.active.variables["Location"] = {
 					latitude  : position.coords.latitude,
 				  longitude : position.coords.longitude
 				};
-// access would be like: $Location.latitude and $Location.longitude
+				// access would be like: $Location.latitude and $Location.longitude
 			},
 			positionError   = function (error) {
 				/* currently a no-op; code that handles errors */
@@ -191,7 +191,7 @@ First, you need to [[calibrate the scan]].
 
 
 
-</tw-passagedata><tw-passagedata pid="2" name="StoryInit" tags="" position="875,400" size="100,100">/%this is a comment. Below is the bit the player will see when the game starts%/
+</tw-passagedata><tw-passagedata pid="2" name="StoryInit" tags="" position="885,410" size="100,100">/%this is a comment. Below is the bit the player will see when the game starts%/
 
 [img[http://fc07.deviantart.net/fs25/f/2008/181/f/f/Trippy_Design_by_Cru_the_Dwarf.jpg]]
 [[Start]] 
@@ -203,9 +203,8 @@ First, you need to [[calibrate the scan]].
 &lt;&lt;set $natsciencelat = 42.7314418&gt;&gt; 
 &lt;&lt;set $natsciencelong = -84.4769123&gt;&gt;
 
-&lt;&lt;set $horticulturelat = 51.44965576467376&gt;&gt; 
-&lt;&lt;set $horticulutrelong = 5.473401720468061&gt;&gt;
-
+&lt;&lt;set $horticulturelat = 51.4496557&gt;&gt; 
+&lt;&lt;set $horticulutrelong = 5.4734017&gt;&gt;
 
 &lt;&lt;set $benefactorsplazalat = 42.731785&gt;&gt; 
 &lt;&lt;set $benefactorsplazalong = -84.477802&gt;&gt;
@@ -223,7 +222,7 @@ remember, decimal degrees. You can click on a google map, and the point you clic
 &lt;&lt;cacheaudio &quot;childsnightmare&quot; &quot;ChildsNightmare.mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;akeley&quot; &quot;Akeleys_Wax_Cylinder_Recording/Akeley_MiGo_Ritual_64kb.mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;intro-ottawa&quot; &quot;ottawa-intro.mp3&quot;&gt;&gt;
-</tw-passagedata><tw-passagedata pid="3" name="old-code calibrate the scan" tags="" position="1150,725" size="100,100">...calibrating...
+</tw-passagedata><tw-passagedata pid="3" name="old-code calibrate the scan" tags="" position="1151,731" size="100,100">...calibrating...
 
  /%This is the nuts-and-bolts of a geotrigger. We come back to this passage again and again to obtain the latest location. Then, in a series of nested if-else statements we go through our list of potential locations. A more elegant version of this code is in the orphaned passage &#39;buffer-test&#39;. For a more elegant version see the &#39;calibrate the scan&#39; passage%/
  
@@ -242,25 +241,11 @@ remember, decimal degrees. You can click on a google map, and the point you clic
 
 You&#39;re wasting time.
 
-[[calibrate the scan]]</tw-passagedata><tw-passagedata pid="5" name="calibrate the scan" tags="" position="900,750" size="100,100">/%this bit of code does the same thing as the &#39;old-code calibrate the scan&#39; passage, but instead calls on the &#39;approxEqual&#39; function that we made in this story&#39;s javascript. The &#39;display&#39; command will display other passages when you put the desired passage&#39;s title within the quotation marks. Note we also make a passage for when the player is in a location we haven&#39;t coded for. That particular passage could contain hints etc%/
+[[calibrate the scan]]</tw-passagedata><tw-passagedata pid="5" name="calibrate the scan" tags="" position="892,749" size="100,100">/%this bit of code does the same thing as the &#39;old-code calibrate the scan&#39; passage, but instead calls on the &#39;approxEqual&#39; function that we made in this story&#39;s javascript. The &#39;display&#39; command will display other passages when you put the desired passage&#39;s title within the quotation marks. Note we also make a passage for when the player is in a location we haven&#39;t coded for. That particular passage could contain hints etc%/
 
 Currently you are at $Location.latitude and $Location.longitude
 
 Scanner Calibration Engaged.
-
-&lt;&lt;if ($Location.latitude - 51.44965576467376) &gt; 0.0005 &gt;&gt;
-	&quot;Latitude diff is higher than 0.0005&quot;
-    &lt;&lt;/if&gt;&gt;
- &lt;&lt;if ($Location.latitude - 51.44965576467376) &lt; 0.0005 &gt;&gt;
-	&quot;Latitude diff is lower than 0.0005&quot;   
-    &lt;&lt;/if&gt;&gt;
-  &lt;&lt;if ($Location.longitude - 5.473401720468061) &gt; 0.0005 &gt;&gt;
-	&quot;longitude diff is higher than 0.0005&quot;
-    &lt;&lt;/if&gt;&gt;
- &lt;&lt;if ($Location.longitude - 5.473401720468061) &lt; 0.0005 &gt;&gt;
-	&quot;longitude diff is lower than 0.0005&quot;   
-&lt;&lt;/if&gt;&gt;
-
 
 &lt;&lt;if approxEqual($Location.latitude, $natsciencelat) and approxEqual($Location.longitude, $natsciencelong)&gt;&gt;
 	&lt;&lt;display &quot;Natural Sciences Building&quot;&gt;&gt;
@@ -274,16 +259,14 @@ Scanner Calibration Engaged.
 
 
 
-</tw-passagedata><tw-passagedata pid="6" name="Horticulture Building" tags="" position="425,450" size="100,100">&lt;&lt;audio &quot;childsnightmare&quot; fadein &gt;&gt;
+</tw-passagedata><tw-passagedata pid="6" name="Horticulture Building" tags="" position="435,442" size="100,100">&lt;&lt;audio &quot;childsnightmare&quot; fadein &gt;&gt;
 [img[https://openclipart.org/image/300px/svg_to_png/28414/PBCrichton-Malware-Hazard-Symbol-Red.png]]
 
 Currently you are at $Location.latitude and $Location.longitude
 
 Area of instability found. Current position: Horticulture building
-This is Brilliant - You have successfully advanced to stage 1 - Understanding.
-Stage 2 is up next - Building an MVP yourself. 
 
-[[Rescan]]</tw-passagedata><tw-passagedata pid="7" name="Rescan" tags="" position="425,600" size="100,100">&lt;iframe src=&quot;//giphy.com/embed/mRAu3P4p28KoU?html5=true&quot; width=&quot;480&quot; height=&quot;480&quot; frameBorder=&quot;0&quot; webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt;
+[[Rescan]]</tw-passagedata><tw-passagedata pid="7" name="Rescan" tags="" position="436,611" size="100,100">&lt;iframe src=&quot;//giphy.com/embed/mRAu3P4p28KoU?html5=true&quot; width=&quot;480&quot; height=&quot;480&quot; frameBorder=&quot;0&quot; webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt;
 [[Rescan for Geotriggers|calibrate the scan]]
 
 
@@ -294,7 +277,7 @@ Currently you are at $Location.latitude and $Location.longitude
 
 Area of instability found. Current Position: Benefactor&#39;s Plaza
 
-[[Rescan]]</tw-passagedata><tw-passagedata pid="9" name="Natural Sciences Building" tags="" position="625,450" size="100,100">[img[https://openclipart.org/image/300px/svg_to_png/28414/PBCrichton-Malware-Hazard-Symbol-Red.png]]
+[[Rescan]]</tw-passagedata><tw-passagedata pid="9" name="Natural Sciences Building" tags="" position="614,446" size="100,100">[img[https://openclipart.org/image/300px/svg_to_png/28414/PBCrichton-Malware-Hazard-Symbol-Red.png]]
 
 Currently you are at $Location.latitude and $Location.longitude
 
